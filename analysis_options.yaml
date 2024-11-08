@@ -1,0 +1,22 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - '**/generated/'
+    - '**/*.mocks.dart'
+
+linter:
+  rules:
+    - always_declare_return_types
+    - always_put_control_body_on_new_line
+    - always_specify_types
+    - avoid_bool_literals_in_conditional_expressions
+    - avoid_void_async
+    - directives_ordering
+    - eol_at_end_of_file
+    - exhaustive_cases
+    - prefer_final_in_for_each
+    - prefer_final_locals
+    - prefer_relative_imports
+    - require_trailing_commas
+    - unawaited_futures

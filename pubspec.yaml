@@ -1,0 +1,30 @@
+name: architectural_base
+description: "A new Flutter project."
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  equatable: ^2.0.5
+  flutter_bloc: ^8.1.5
+  flutter_ioc: ^2.1.0
+  flutter_ioc_get_it: ^1.2.1
+  flutter_localizations:
+    sdk: flutter
+  go_router: ^14.1.2
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  bloc_test: ^9.1.7
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
