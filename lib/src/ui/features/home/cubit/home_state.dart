@@ -1,6 +1,6 @@
 part of 'home_cubit.dart';
 
- class HomeState extends Equatable {
+class HomeState extends Equatable {
   const HomeState();
 
   @override
