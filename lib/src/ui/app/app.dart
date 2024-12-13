@@ -5,14 +5,18 @@ import '../navigation/custom_router.dart';
 import '../theming/app_theme.dart';
 import '../theming/app_theme_impl.dart';
 
+/// The main application widget.
 class App extends StatelessWidget {
+  /// Constructs a new [App].
   const App({super.key});
 
-  static AppTheme applicationTheme = AppThemeImpl();
+  /// The application theme.
+  static final AppTheme applicationTheme = AppThemeImpl();
 
   @override
   Widget build(BuildContext context) {
     final CustomRouter customRouter = CustomRouter();
+
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,

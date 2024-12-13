@@ -20,3 +20,4 @@ linter:
     - prefer_relative_imports
     - require_trailing_commas
     - unawaited_futures
+    - always_require_non_null_named_parameters

@@ -1,17 +1,3 @@
-/// Enumerates the different environments the application can be build against.
-enum Environments {
-  /// Indicates that the application is running against the development
-  /// environment.
-  development,
-
-  /// Indicates that the application is running against the staging environment.
-  staging,
-
-  /// Indicates that the application is running against the production
-  /// environment.
-  production,
-}
-
 /// Provides type safe access to different compile-time application settings
 /// that supplied to the application when being compiled.
 class ApplicationSettings {
@@ -31,4 +17,18 @@ class ApplicationSettings {
         ),
     };
   }
+}
+
+/// Enumerates the different environments the application can be build against.
+enum Environments {
+  /// Indicates that the application is running against the development
+  /// environment.
+  development,
+
+  /// Indicates that the application is running against the staging environment.
+  staging,
+
+  /// Indicates that the application is running against the production
+  /// environment.
+  production,
 }

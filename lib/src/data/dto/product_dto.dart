@@ -1,15 +1,15 @@
 import '../../core/entities/entities.dart';
 
 class ProductDto {
-  final String id;
-  final String name;
-  final double price;
-
   ProductDto({
     required this.id,
     required this.name,
     required this.price,
   });
+
+  final String id;
+  final String name;
+  final double price;
 
   factory ProductDto.fromJson(Map<String, dynamic> json) {
     return ProductDto(

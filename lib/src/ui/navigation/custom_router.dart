@@ -10,9 +10,11 @@ import '../features/settings/view/settings_page.dart';
 final GlobalKey<NavigatorState> rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
 
+/// The navigator key for the home navigator.
 final GlobalKey<NavigatorState> homeNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'home');
 
+/// The navigator key for the settings navigator.
 final GlobalKey<NavigatorState> settingsNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'settings');
 
@@ -21,12 +23,6 @@ final GlobalKey<NavigatorState> settingsNavigatorKey =
 /// Routes that are `fullScreenDialogs` should also set `_rootNavigatorKey` as
 /// the `parentNavigatorKey` to ensure that the dialog is displayed correctly.
 class CustomRouter {
-  CustomRouter._();
-
-  factory CustomRouter() {
-    return _singleton ??= CustomRouter._();
-  }
-
   static CustomRouter? _singleton;
   GoRouter? _routerInstance;
 
@@ -75,6 +71,13 @@ class CustomRouter {
           ),
         ],
       );
+
+  CustomRouter._();
+
+  /// The singleton instance of the [CustomRouter].
+  factory CustomRouter() {
+    return _singleton ??= CustomRouter._();
+  }
 
   Widget _wrapWithBanner({
     required Widget child,

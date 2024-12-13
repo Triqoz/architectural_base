@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'app_theme.dart';
 
+/// Concrete implementation of [AppTheme].
 class AppThemeImpl extends AppTheme {
-  AppThemeImpl();
-
   @override
   ColorScheme get colorScheme => ColorScheme.fromSeed(
         seedColor: const Color(0xFF000000),
@@ -16,4 +15,7 @@ class AppThemeImpl extends AppTheme {
           color: colorScheme.primary,
         ),
       );
+
+  /// Constructs a new [AppThemeImpl].
+  AppThemeImpl();
 }
