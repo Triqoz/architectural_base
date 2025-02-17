@@ -1,5 +1,8 @@
 import 'package:flutter_ioc/flutter_ioc.dart';
 
+import '../core/entities/product.dart';
+import '../core/repositories/products_repository.dart';
+import '../core/result/result.dart';
 import 'clients/clients.dart';
 import 'repositories/products_repository_impl.dart';
 
@@ -17,9 +20,27 @@ Future<void> bootstrap() async {
   );
 
   // Register repositories
-  ioc.registerFactory<ProductsRepositoryImpl>(
+  ioc.registerFactory<ProductsRepository>(
     () => ProductsRepositoryImpl(
       productsClient: ioc.get<ProductsClient>(),
     ),
   );
+
+
+  ioc.registerFactory<ProductsRepository>(
+        () => X(),
+    instanceName: 'x',
+  );
+
+  print(ioc.getAll<ProductsRepository>().length);
+
+  print(ioc.get<ProductsRepository>());
+}
+
+class X implements ProductsRepository {
+  @override
+  Future<Result<List<Product>>> getProducts() {
+    // TODO: implement getProducts
+    throw UnimplementedError();
+  }
 }

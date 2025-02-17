@@ -1,45 +1,39 @@
-import '../../core/entities/entities.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+import '../../../../../core.dart';
+
+part 'product_dto.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class ProductDto {
   ProductDto({
     required this.id,
     required this.name,
-    required this.price,
   });
 
+  @JsonKey(name: 'id')
   final String id;
+
+  @JsonKey(name: 'name')
   final String name;
-  final double price;
 
   factory ProductDto.fromJson(Map<String, dynamic> json) {
+    return _$ProductDtoFromJson(json);
+  }
+
+  factory ProductDto.fromEntity(Product product) {
     return ProductDto(
-      id: json['id'],
-      name: json['name'],
-      price: json['price'],
+      id: product.id,
+      name: product.name,
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'price': price,
-    };
-  }
-
-  factory ProductDto.fromEntity(Product entity) {
-    return ProductDto(
-      id: entity.id,
-      name: entity.name,
-      price: entity.price,
-    );
-  }
+  Map<String, dynamic> toJson() => _$ProductDtoToJson(this);
 
   Product toEntity() {
     return Product(
       id: id,
       name: name,
-      price: price,
     );
   }
 }

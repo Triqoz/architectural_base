@@ -5,7 +5,6 @@ import 'data.dart' as data;
 import 'ui.dart' as ui;
 
 void main() async {
-  // Initialize the GetIt Ioc Container.
   GetItIocContainer.register();
 
   await data.bootstrap();

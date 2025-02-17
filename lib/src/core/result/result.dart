@@ -1,47 +1,60 @@
 /// Shared base class for results.
-sealed class Result<T extends Object> {}
+sealed class Result<T> {}
 
 /// Indicates that the result was a success and contains a value of type `T`.
-class SuccessResult<T extends Object> extends Result<T> {
+class SuccessResult<T> extends Result<T> {
   /// Constructs a failure result with a required value.
-  SuccessResult({
-    required this.value,
-  });
+  SuccessResult._({
+    required T Function() valueResolver,
+  }) : _valueResolver = valueResolver;
+
+  /// Creates a successful [Result] containing a value.
+  factory SuccessResult.createWithValue(T value) {
+
+    assert(
+      value != null,
+      'Supplied value should not be null. Use the `createWithoutValue` method to communicate a success result without returning a value.',
+    );
+
+    return SuccessResult<T>._(valueResolver: () => value);
+  }
+
+  /// Creates a successful [Result] without a value (type `void`).
+  ///
+  /// Because there is no value, accessing the [value] field will throw an
+  /// [UnimplementedError].
+  factory SuccessResult.createWithoutValue() {
+    return SuccessResult<T>._(
+      valueResolver: () => throw UnimplementedError(),
+    );
+  }
+
+  final T Function() _valueResolver;
 
   /// The value of the result.
-  final T value;
+  T get value => _valueResolver();
 }
 
 /// Indicates that the result was a failure and contains a failure code.
-class FailureResult<T extends Object> extends Result<T> {
+class FailureResult<T> extends Result<T> {
   /// Constructs a failure result with a required [FailureCode].
-  FailureResult({
+  FailureResult._({
     required this.failure,
   });
+
+  factory FailureResult.create(FailureCode failure) {
+    return FailureResult<T>._(failure: failure);
+  }
 
   /// The [FailureCode] of the result.
   final FailureCode failure;
 }
 
-/// Replacement type for an `EmptySuccessResult`.
-///
-/// This should be used when you don't care about the return value of a result.
-typedef VoidResult = Result<Never>;
-
-/// Creates a successful [Result] with a value of type `T`.
-VoidResult successVoid() {
-  return SuccessResult<Never>(value: throw UnimplementedError());
-}
-
-/// Creates a failed [Result] with a [FailureCode].
-VoidResult failureVoid(FailureCode failure) {
-  return FailureResult<Never>(failure: failure);
-}
-
 /// An enumeration that represents the possible failure codes of a result.
 enum FailureCode {
+  /// Example failure.
   notFound,
 
   /// Unknown placeholder failure.
-  unknown;
+  unknown, validationError, networkError, unauthorized;
 }
