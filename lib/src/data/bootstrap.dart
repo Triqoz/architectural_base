@@ -26,9 +26,8 @@ Future<void> bootstrap() async {
     ),
   );
 
-
   ioc.registerFactory<ProductsRepository>(
-        () => X(),
+    () => X(),
     instanceName: 'x',
   );
 
